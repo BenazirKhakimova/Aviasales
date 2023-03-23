@@ -1,0 +1,78 @@
+@import '../App/vars.scss';
+
+.ticket {
+    width: 500px;
+    background: $white;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    padding: 20px;
+    padding-right: 50px;
+    margin-bottom: 20px;
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 25px;
+    }
+
+    &__price {
+        font-family: $family;
+        font-style: $style;
+        font-weight: $bold;
+        font-size: 24px;
+        line-height: 24px;
+        color: $blue;
+    }
+
+    &__main {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        margin-bottom: 10px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+    &__info {
+        width: 33.33%;
+        @media screen and (max-width: 540px) {
+            width: auto;
+        }
+        // @media screen and (max-width: 375px) {
+        // }
+    }
+
+    &__text {
+        &_gray {
+            font-family: $family;
+            font-style: $style;
+            font-weight: $bold;
+            font-size: 12px;
+            line-height: 18px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: $grey;
+        }
+        &_black {
+            font-family: $family;
+            font-style: $style;
+            font-weight: $bold;
+            font-size: 14px;
+            line-height: 21px;
+            color: $black;
+        }
+    }
+}
+@media screen and (max-width: 540px) {
+    .ticket {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .ticket {
+        padding: 16px;
+    }
+}

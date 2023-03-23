@@ -1,19 +1,11 @@
-import React from 'react';
-// import PropTypes from 'prop-types';
-//import styles from './Logo.module.scss';
+import React from "react";
+import logo from "../../images/Logo.svg";
+import styles from "./Logo.module.scss";
 
-const Logo = (props) => (
-  <div className="LogoWrapper">
-    Test content
-  </div>
+const Logo = () => (
+    <div className={styles.LogoWrapper}>
+        <img src={logo} alt="logo" className={styles.logo} />
+    </div>
 );
-
-Logo.propTypes = {
-  // bla: PropTypes.string,
-};
-
-Logo.defaultProps = {
-  // bla: 'test',
-};
 
 export default Logo;
