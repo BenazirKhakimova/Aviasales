@@ -1,27 +1,43 @@
 import React from "react";
-import PropTypes from "prop-types";
+import classNames from "classnames";
+import { useDispatch, useSelector } from "react-redux";
+import {
+    sortingTheCheapest,
+    sortingTheFastest,
+} from "../../store/slices/ticketSlice";
 import styles from "./Tabs.module.scss";
 
-const Tabs = props => (
-    <div className={styles.tabs}>
-        <button
-            type="button"
-            className={`${styles.tabs__item} ${styles.tabs__item_active}`}
-        >
-            Самый дешевый
-        </button>
-        <button type="button" className={styles.tabs__item}>
-            Самый быстрый
-        </button>
-    </div>
-);
+const Tabs = () => {
+    const dispatch = useDispatch();
+    const sort = useSelector(state => state.ticketReducer.sort);
 
-Tabs.propTypes = {
-    // bla: PropTypes.string,
-};
+    const classCheapest = classNames({
+        [styles.tabs__item]: true,
+        [styles.tabs__item_active]: sort === "cheapest",
+    });
+    const classFastest = classNames({
+        [styles.tabs__item]: true,
+        [styles.tabs__item_active]: sort === "fastest",
+    });
 
-Tabs.defaultProps = {
-    // bla: 'test',
+    return (
+        <div className={styles.tabs}>
+            <button
+                type="button"
+                className={classCheapest}
+                onClick={() => dispatch(sortingTheCheapest("cheapest"))}
+            >
+                Самый дешевый
+            </button>
+            <button
+                type="button"
+                className={classFastest}
+                onClick={() => dispatch(sortingTheFastest("fastest"))}
+            >
+                Самый быстрый
+            </button>
+        </div>
+    );
 };
 
 export default Tabs;

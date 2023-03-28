@@ -1,1 +1,13 @@
-/* your css code */
+@import "../App/vars.scss";
+
+.warning {
+    text-align: center;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 20px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: $black;
+}

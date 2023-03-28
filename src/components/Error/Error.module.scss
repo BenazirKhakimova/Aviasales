@@ -1,0 +1,38 @@
+@import "../App/vars.scss";
+
+.error {
+    display: flex;
+    align-items: flex-start;
+    background-color: #ffcccc;
+    border: 1px solid #ff0000;
+    border-radius: 5px;
+    padding: 10px;
+    width: 500px;
+
+    img {
+        width: 30px;
+        margin-right: 5px;
+    }
+
+    p {
+        font-family: $family;
+        font-style: normal;
+        font-weight: $bold;
+        font-size: 14px;
+        line-height: 20px;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        color: $white;
+    }
+}
+@media screen and (max-width: 540px) {
+    .error {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .error {
+        padding: 16px;
+    }
+}

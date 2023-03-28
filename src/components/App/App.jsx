@@ -1,12 +1,11 @@
 import React from "react";
-import PropTypes from "prop-types";
-import styles from "./App.module.scss";
 import Logo from "../Logo/Logo";
 import Filter from "../Filter/Filter";
 import Tabs from "../Tabs/Tabs";
 import TicketList from "../TicketList/TicketList";
+import styles from "./App.module.scss";
 
-const App = props => (
+const App = () => (
     <div className={`${styles.appWrapper} container`}>
         <Logo />
         <div className={styles.main}>
@@ -18,13 +17,5 @@ const App = props => (
         </div>
     </div>
 );
-
-App.propTypes = {
-    // bla: PropTypes.string,
-};
-
-App.defaultProps = {
-    // bla: 'test',
-};
 
 export default App;
