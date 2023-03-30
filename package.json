@@ -26,7 +26,7 @@
         "test": "react-scripts test",
         "eject": "react-scripts eject",
         "lint": "eslint src/ --fix --color",
-        "pretty": "prettier --write \"**/*.{js,jsx,json}\"",
+        "pretty": "prettier --write src/",
         "prepare": "husky install"
     },
     "eslintConfig": {
@@ -61,7 +61,7 @@
         "prettier": "2.8.6"
     },
     "lint-staged": {
-        "**/*.{js,jsx}": [
+        "**/*.{js,jsx,scss}": [
             "npm run lint",
             "npm run pretty"
         ]
