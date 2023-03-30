@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import uniqid from "uniqid";
-import { fetchTickets } from "../../store/slices/ticketSlice";
+import { fetchTickets } from "../../store/thunks/fetchTicketsAcyncThunk";
 import { selectFilteredTicket } from "../../store/selectors/selector";
 import Ticket from "../Ticket/Ticket";
 import style from "./TicketList.module.scss";
@@ -16,7 +15,9 @@ const TicketList = () => {
 
     useEffect(() => {
         if (status === "idle") {
-            dispatch(fetchTickets()); // отправляем запрос сразу после рендера
+            fetch("https://aviasales-test-api.kata.academy/search")
+                .then(res => res.json())
+                .then(searchId => dispatch(fetchTickets(searchId.searchId))); // отправляем запрос сразу после рендера
         }
     }, [status, dispatch]);
 
@@ -25,7 +26,7 @@ const TicketList = () => {
         content = <Spinner />;
     } else if (status === "succeeded") {
         content = tickets.map(ticket => (
-            <Ticket key={uniqid()} ticket={ticket} />
+            <Ticket key={ticket.id} ticket={ticket} />
         ));
     } else if (status === "failed") {
         content = <Error error={error} />;

@@ -1,33 +1,13 @@
-/* eslint-disable consistent-return */
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-
-const searchId = "743ef952542b6df5e214bb4437feb1eb";
-const TICKETS_URL = `https://aviasales-test-api.kata.academy/tickets?searchId=${searchId}`;
-
-export const fetchTickets = createAsyncThunk(
-    "tickets/fetchTickets",
-
-    async (_, { rejectWithValue }) => {
-        try {
-            const response = await fetch(TICKETS_URL);
-            if (!response.ok) {
-                throw new Error("Server error!");
-            }
-            const data = response.json();
-            return data;
-        } catch (error) {
-            return rejectWithValue(
-                "Билеты не найдены! Пожалуйста, повторите попытку снова"
-            );
-        }
-    }
-);
+import { createSlice } from "@reduxjs/toolkit";
+import uniqid from "uniqid";
+import { fetchTickets } from "../thunks/fetchTicketsAcyncThunk";
 
 const initialState = {
     tickets: [],
     status: "idle",
     error: null,
     sort: "cheapest",
+    ticketStatus: false,
 };
 
 const ticketSlice = createSlice({
@@ -58,10 +38,14 @@ const ticketSlice = createSlice({
             })
             .addCase(fetchTickets.fulfilled, (state, action) => {
                 state.status = "succeeded";
-                const tickets = action.payload?.tickets.sort(
-                    (a, b) => a.price - b.price
-                );
+                const tickets = action.payload?.tickets
+                    .map(ticket => ({
+                        ...ticket,
+                        id: uniqid(),
+                    }))
+                    .sort((a, b) => a.price - b.price);
                 state.tickets = tickets;
+                state.ticketStatus = action.payload?.stop;
             })
             .addCase(fetchTickets.rejected, (state, action) => {
                 state.status = "failed";

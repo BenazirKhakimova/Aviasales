@@ -5,10 +5,10 @@ const filtersSlice = createSlice({
     initialState: {
         filters: {
             all: true,
-            noTransfer: true,
-            oneTransfer: true,
-            twoTransfers: true,
-            threeTransfers: true,
+            noStop: true,
+            oneStop: true,
+            twoStops: true,
+            threeStops: true,
         },
     },
     reducers: {
@@ -18,17 +18,17 @@ const filtersSlice = createSlice({
 
             if (filter === "all") {
                 filters.all = checked;
-                filters.noTransfer = checked;
-                filters.oneTransfer = checked;
-                filters.twoTransfers = checked;
-                filters.threeTransfers = checked;
+                filters.noStop = checked;
+                filters.oneStop = checked;
+                filters.twoStops = checked;
+                filters.threeStops = checked;
             } else {
                 filters[filter] = checked;
                 filters.all =
-                    filters.noTransfer &&
-                    filters.oneTransfer &&
-                    filters.twoTransfers &&
-                    filters.threeTransfers;
+                    filters.noStop &&
+                    filters.oneStop &&
+                    filters.twoStops &&
+                    filters.threeStops;
             }
         },
     },

@@ -7,7 +7,7 @@ const Ticket = ({ ticket }) => {
     const { carrier, price, segments } = ticket;
     const [there, back] = segments;
 
-    const durationTime = where => {
+    const calcDurationTime = where => {
         // вычисляем продолжительность полета
         const hoursThere = Math.floor(where.duration / 60);
         const minThere = there.duration % 60;
@@ -15,7 +15,7 @@ const Ticket = ({ ticket }) => {
         return `${hoursThere} ч ${minThere} м`;
     };
 
-    const departureAndArrivalTime = where => {
+    const calcDepartureAndArrivalTime = where => {
         // вычисляем время начала полета
         const departureTime = new Date(where.date);
         const formatedDepartureTime = format(departureTime, "HH:mm");
@@ -26,17 +26,17 @@ const Ticket = ({ ticket }) => {
         return `${formatedDepartureTime} - ${formatedArrivalTime}`;
     };
 
-    // eslint-disable-next-line consistent-return
-    const stops = where => {
+    const addStops = where => {
         if (where.stops.length === 0) {
             return "Без пересадок";
         }
         if (where.stops.length === 1) {
             return `${where.stops.length} Пересадка`;
         }
-        if (where.stops.length <= 3) {
+        if (where.stops.length < 5) {
             return `${where.stops.length} Пересадки`;
         }
+        return `${where.stops.length} Пересадкок`;
     };
 
     return (
@@ -59,17 +59,19 @@ const Ticket = ({ ticket }) => {
                         {there.origin} – {there.destination}
                     </p>
                     <p className={styles.ticket__text_black}>
-                        {departureAndArrivalTime(there)}
+                        {calcDepartureAndArrivalTime(there)}
                     </p>
                 </div>
                 <div className={styles.ticket__info}>
                     <p className={styles.ticket__text_gray}>В пути</p>
                     <p className={styles.ticket__text_black}>
-                        {durationTime(there)}
+                        {calcDurationTime(there)}
                     </p>
                 </div>
                 <div className={styles.ticket__info}>
-                    <p className={styles.ticket__text_gray}>{stops(there)}</p>
+                    <p className={styles.ticket__text_gray}>
+                        {addStops(there)}
+                    </p>
 
                     <p className={styles.ticket__text_black}>
                         {there.stops.join(", ")}
@@ -83,17 +85,17 @@ const Ticket = ({ ticket }) => {
                         {back.origin} – {back.destination}
                     </p>
                     <p className={styles.ticket__text_black}>
-                        {departureAndArrivalTime(back)}
+                        {calcDepartureAndArrivalTime(back)}
                     </p>
                 </div>
                 <div className={styles.ticket__info}>
                     <p className={styles.ticket__text_gray}>В пути</p>
                     <p className={styles.ticket__text_black}>
-                        {durationTime(back)}
+                        {calcDurationTime(back)}
                     </p>
                 </div>
                 <div className={styles.ticket__info}>
-                    <p className={styles.ticket__text_gray}>{stops(back)}</p>
+                    <p className={styles.ticket__text_gray}>{addStops(back)}</p>
 
                     <p className={styles.ticket__text_black}>
                         {back.stops.join(", ")}

@@ -42,55 +42,55 @@ const Filter = () => {
                 <li className={styles.filter__item}>
                     <input
                         type="checkbox"
-                        name="noTransfer"
-                        id="noTransfer"
-                        value="noTransfer"
-                        checked={filters.noTransfer}
+                        name="noStop"
+                        id="noStop"
+                        value="noStop"
+                        checked={filters.noStop}
                         onChange={e =>
                             setFilter(e.target.value, e.target.checked)
                         }
                     />
-                    <label htmlFor="noTransfer">Без пересадок</label>
+                    <label htmlFor="noStop">Без пересадок</label>
                 </li>
 
                 <li className={styles.filter__item}>
                     <input
                         type="checkbox"
-                        name="oneTransfer"
-                        id="oneTransfer"
-                        value="oneTransfer"
-                        checked={filters.oneTransfer}
+                        name="oneStop"
+                        id="oneStop"
+                        value="oneStop"
+                        checked={filters.oneStop}
                         onChange={e =>
                             setFilter(e.target.value, e.target.checked)
                         }
                     />
-                    <label htmlFor="oneTransfer">1 пересадка</label>
+                    <label htmlFor="oneStop">1 пересадка</label>
                 </li>
                 <li className={styles.filter__item}>
                     <input
                         type="checkbox"
-                        name="twoTransfers"
-                        id="twoTransfers"
-                        value="twoTransfers"
-                        checked={filters.twoTransfers}
+                        name="twoStops"
+                        id="twoStops"
+                        value="twoStops"
+                        checked={filters.twoStops}
                         onChange={e =>
                             setFilter(e.target.value, e.target.checked)
                         }
                     />
-                    <label htmlFor="twoTransfers">2 пересадки</label>
+                    <label htmlFor="twoStops">2 пересадки</label>
                 </li>
                 <li className={styles.filter__item}>
                     <input
                         type="checkbox"
-                        name="threeTransfers"
-                        id="threeTransfers"
-                        value="threeTransfers"
-                        checked={filters.threeTransfers}
+                        name="threeStops"
+                        id="threeStops"
+                        value="threeStops"
+                        checked={filters.threeStops}
                         onChange={e =>
                             setFilter(e.target.value, e.target.checked)
                         }
                     />
-                    <label htmlFor="threeTransfers">3 пересадки</label>
+                    <label htmlFor="threeStops">3 пересадки</label>
                 </li>
             </ul>
         </div>

@@ -1,5 +1,3 @@
-/* eslint-disable no-nested-ternary */
-/* eslint-disable no-fallthrough */
 import { createSelector } from "@reduxjs/toolkit";
 
 const selectTicket = state => state.ticketReducer.tickets;
@@ -16,19 +14,16 @@ export const selectFilteredTicket = createSelector(
                     return true;
                 }
 
-                if (filters.noTransfer === true && there.stops.length === 0) {
+                if (filters.noStop === true && there.stops.length === 0) {
                     return true;
                 }
-                if (filters.oneTransfer === true && there.stops.length === 1) {
+                if (filters.oneStop === true && there.stops.length === 1) {
                     return true;
                 }
-                if (filters.twoTransfers === true && there.stops.length === 2) {
+                if (filters.twoStops === true && there.stops.length === 2) {
                     return true;
                 }
-                if (
-                    filters.threeTransfers === true &&
-                    there.stops.length === 3
-                ) {
+                if (filters.threeStops === true && there.stops.length === 3) {
                     return true;
                 }
                 return false;
