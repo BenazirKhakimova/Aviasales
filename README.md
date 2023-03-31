@@ -1,2 +1,2 @@
 ## link to the app
-### https://aviasales-two-alpha.vercel.app/
+### https://aviasales-furc8qa7p-benazirkhakimova.vercel.app/
