@@ -28,6 +28,9 @@
         "import/prefer-default-export": "off",
         "jsx-a11y/label-has-associated-control": "off",
         "no-param-reassign": "off",
-        "react/forbid-prop-types": "off"
+        "react/forbid-prop-types": "off",
+        "no-underscore-dangle":"off",
+        "react/state-in-constructor": "off",
+        "react/prop-types": "off"
     }
 }

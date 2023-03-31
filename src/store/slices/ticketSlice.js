@@ -37,19 +37,24 @@ const ticketSlice = createSlice({
                 state.error = null;
             })
             .addCase(fetchTickets.fulfilled, (state, action) => {
-                state.status = "succeeded";
                 const tickets = action.payload?.tickets
                     .map(ticket => ({
                         ...ticket,
                         id: uniqid(),
                     }))
                     .sort((a, b) => a.price - b.price);
-                state.tickets = tickets;
-                state.ticketStatus = action.payload?.stop;
+                state.tickets = [...state.tickets, ...tickets];
+
+                if (!action.payload.stop) {
+                    state.ticketStatus = !state.ticketStatus;
+                } else {
+                    state.status = "succeeded";
+                }
             })
             .addCase(fetchTickets.rejected, (state, action) => {
                 state.status = "failed";
                 state.error = action.payload;
+                state.ticketStatus = !state.ticketStatus;
             });
     },
 });

@@ -1,8 +1,15 @@
 @import "../App/vars.scss";
 
+.wrapper{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .error {
     display: flex;
-    align-items: flex-start;
+    align-items: start;
     background-color: #ffcccc;
     border: 1px solid #ff0000;
     border-radius: 5px;
